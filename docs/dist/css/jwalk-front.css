@@ -2993,7 +2993,8 @@ a {
   position: relative; }
   .jwalk-hero-overlay .jwalk-hero-img {
     width: 100%;
-    height: auto; }
+    height: auto;
+    vertical-align: middle; }
   .jwalk-hero-overlay .jwalk-hero-content {
     position: absolute;
     top: 0;

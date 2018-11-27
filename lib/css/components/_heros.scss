@@ -8,6 +8,7 @@
     @include make-prefix-class('hero-img') {
         width:100%;
         height:auto;
+        vertical-align:middle;
     }
 
     @include make-prefix-class('hero-content') {
