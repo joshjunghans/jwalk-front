@@ -1,0 +1,59 @@
+@include make-prefix-class((row)) {
+    @include make-flex-row();
+}
+
+@include make-prefix-class((column)) {
+    @include make-flex-column();
+}
+
+[class^="#{$class-prefix}-col-"], [class*=" #{$class-prefix}-col-"] {
+    width:100%;
+    @include flex();
+}
+
+@for $i from 1 through $grid-count {
+    $col-class:col- + $i;
+    $width: floor( ($i / $grid-count) * 100 ) + %;
+    @include make-flex-column-variants($col-class,$width);
+}
+
+@each $breakpoint,$val in $breakpoints {
+    $min-val:$val - 1;
+    @include breakpoint-up($val) {
+        $row-class-list:($breakpoint,'row');
+        $column-class-list:($breakpoint,'column');
+
+        @include make-prefix-class($row-class-list) {
+            @include make-flex-row();
+        }
+
+        @include make-prefix-class($column-class-list) {
+            @include make-flex-column();
+        }
+
+        @for $i from 1 through $grid-count {
+            $col-class:list-concat(($breakpoint,'col',$i),$class-delimiter);
+            $width: floor( ($i / $grid-count) * 100 ) + %;
+            @include make-flex-column-variants($col-class,$width);
+        }
+    }
+
+    @include breakpoint-down($min-val) {
+        $row-class-list:($breakpoint,'down','row');
+        $column-class-list:($breakpoint,'down','column');
+
+        @include make-prefix-class($row-class-list) {
+            @include make-flex-row();
+        }
+
+        @include make-prefix-class($column-class-list) {
+            @include make-flex-column();
+        }
+
+        @for $i from 1 through $grid-count {
+            $col-class:list-concat(($breakpoint,'down','col',$i),$class-delimiter);
+            $width: floor( ($i / $grid-count) * 100 ) + %;
+            @include make-flex-column-variants($col-class,$width);
+        }
+    }
+}

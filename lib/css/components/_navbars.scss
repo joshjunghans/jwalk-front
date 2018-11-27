@@ -1,0 +1,29 @@
+@include make-prefix-class(('navbar')) {
+    @include flexbox();
+    padding: $navbar-padding-v $navbar-padding-h;
+
+    @include make-prefix-class('navbar-nav') {
+        padding:0;
+        margin:0;
+        list-style-type:none;
+        @include inline-flex();
+        @include flex-grow(1);
+        @include justify-content(flex-end);
+        @include align-items(center);
+
+        @include make-prefix-class('nav-link') {
+            padding: $navbar-navlink-padding-v $navbar-navlink-padding-h;
+        }
+    }
+}
+
+@include make-prefix-class(('navbar-contained')) {
+    @include flexbox();
+
+    @each $breakpoint,$val in $breakpoints {
+        @include breakpoint-up($val) {
+            $width:map-get($containers,$breakpoint);
+            @include make-container($width);
+        }
+    }
+}

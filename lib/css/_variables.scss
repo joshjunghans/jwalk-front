@@ -1,0 +1,78 @@
+$class-prefix:'jwalk' !default;
+$class-delimiter:'-' !default;
+
+$gray-1:#222222 !default;
+$gray-2:#333333 !default;
+$gray-3:#666666 !default;
+$gray-4:#999999 !default;
+$gray-5:#cccccc !default;
+$gray-6:#eeeeee !default;
+
+$grays:() !default;
+
+$grays:map-merge((
+    'gray-1':$gray-1,
+    'gray-2':$gray-2,
+    'gray-3':$gray-3,
+    'gray-4':$gray-4,
+    'gray-5':$gray-5,
+    'gray-6':$gray-6
+),$grays);
+
+$white:#ffffff !default;
+$primary:#3b5998 !default;
+$secondary:#6897bb !default;
+$info:#f6f5d7 !default;
+$warning:#ffa500 !default;
+$error:#ff4444 !default;
+
+$theme-colors:() !default;
+
+$theme-colors:map-merge((
+    'white':$white,
+    'primary':$primary,
+    'secondary':$secondary,
+    'info':$info,
+    'warning':$warning,
+    'error':$error
+),$theme-colors);
+
+$all-colors:map-merge($grays,$theme-colors) !default;
+
+$gutter-width:1.5rem;
+
+$breakpoints:() !default;
+
+$breakpoints:map-merge((
+    'sm':480px,
+    'md':780px,
+    'lg':980px,
+    'xl':1200px
+),$breakpoints);
+
+$containers:() !default;
+
+$containers:map-merge((''
+    'sm':450px,
+    'md':750px,
+    'lg':950px,
+    'xl':1170px
+),$containers);
+
+$grid-count:12 !default;
+
+$base-font-family: Verdana, Helvetica, sans-serif;
+$base-font-size: 14px;
+
+$link-text-decoration: none;
+
+$navbar-padding-v: ceil($gutter-width / 4);
+$navbar-padding-h:ceil($gutter-width / 4);
+$navbar-navlink-padding-v: ceil($gutter-width / 2);
+$navbar-navlink-padding-h: ceil($gutter-width / 2);
+
+$main-header-navlink-transition: .25s ease-in-out;
+
+$main-header-default-background-color: $primary;
+$main-header-default-navlink-color: $gray-5;
+$main-header-default-navlink-hover-color: $white;

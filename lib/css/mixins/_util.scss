@@ -1,0 +1,53 @@
+@function half-gutter($gutter:$gutter-width) {
+    @return ceil($gutter / 2);
+}
+
+@function list-concat($list, $glue: '', $is-nested: false) {
+    $result: null;
+
+    @for $i from 1 through length($list) {
+        $e: nth($list, $i);
+
+        @if type-of($e) == list {
+            $result: $result#{to-string($e, $glue, true)};
+        } @else {
+            $result: if($i != length($list) or $is-nested, $result#{$e}#{$glue}, $result#{$e});
+        }
+    }
+    @return $result;
+}
+
+@mixin make-class($class-bits,$delimiter:$class-delimiter) {
+    $class: '.' + list-concat($class-bits,$delimiter);
+
+    #{$class} {
+        @content;
+    }
+}
+
+@mixin make-prefix-class($class-bits,$delimiter:$class-delimiter) {
+    $class-list:join(($class-prefix),$class-bits);
+    @include make-class($class-list,$delimiter) {
+        @content;
+    }
+}
+
+@mixin make-container($max-width) {
+    margin-left:auto;
+    margin-right:auto;
+    width:100%;
+    max-width:$max-width;
+}
+
+@mixin make-background-classes($list:$all-colors) {
+    @each $name,$color in $list {
+        $class-list:(
+            'bg',
+            $name
+        );
+
+        @include make-prefix-class($class-list) {
+            background-color:$color;
+        }
+    }
+}

@@ -1,0 +1,21 @@
+html,body,.#{$class-prefix}-wrapper {
+    min-height:100vh;
+}
+
+body {
+    font-family:$base-font-family;
+    font-size:$base-font-size;
+}
+
+a {
+    text-decoration:$link-text-decoration;
+}
+
+@include make-prefix-class(('container')) {
+    @each $breakpoint,$val in $breakpoints {
+        @include breakpoint-up($val) {
+            $width:map-get($containers,$breakpoint);
+            @include make-container($width);
+        }
+    }
+}

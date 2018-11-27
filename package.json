@@ -1,0 +1,38 @@
+{
+  "name": "jwalk-front",
+  "version": "1.0.0",
+  "description": "Custom front-end framework",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joshjunghans/jwalk-front.git"
+  },
+  "keywords": [
+    "front-end",
+    "css",
+    "scss",
+    "sass",
+    "framework"
+  ],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/joshjunghans/jwalk-front/issues"
+  },
+  "homepage": "https://github.com/joshjunghans/jwalk-front#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-rename": "^1.4.0",
+    "gulp-sass": "^4.0.2",
+    "node-sass": "^4.10.0"
+  },
+  "dependencies": {
+    "normalize-scss": "^7.0.1"
+  }
+}

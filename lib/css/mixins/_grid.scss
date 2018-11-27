@@ -1,0 +1,42 @@
+@mixin make-flex-row {
+    @include flexbox();
+    @include flex-wrap(wrap);
+    @content;
+}
+
+@mixin make-flex-column {
+    @include flexbox();
+    @include flex-flow(column nowrap);
+    @content;
+}
+
+@mixin make-flex-row-column($width) {
+    @include flex-basis($width);
+    max-width:$width;
+    @content;
+}
+
+@mixin make-flex-column-variants($class,$width) {
+    $half-gutter:ceil($gutter-width / 2);
+
+    @include make-prefix-class(($class)) {
+        @include make-flex-row-column($width);
+    }
+
+    @include make-prefix-class(($class,'gutter')) {
+        @include make-flex-row-column($width);
+        padding:$half-gutter;
+    }
+
+    @include make-prefix-class(($class,'h','gutter')) {
+        @include make-flex-row-column($width);
+        padding-left:$half-gutter;
+        padding-right:$half-gutter;
+    }
+
+    @include make-prefix-class(($class,'v','gutter')) {
+        @include make-flex-row-column($width);
+        padding-top:$half-gutter;
+        padding-bottom:$half-gutter;
+    }
+}
