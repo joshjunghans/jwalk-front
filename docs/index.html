@@ -7,7 +7,7 @@
 </head>
 <body>
     <div id="jwalk-demo" class="jwalk-wrapper">
-            <router-view></router-view>
+        <router-view></router-view>
         <!-- <header class="jwalk-main-header jwalk-primary">
             <nav class="jwalk-navbar jwalk-navbar-contained">
                 <a class="jwalk-header-logo">
@@ -83,15 +83,57 @@
         </footer> -->
     </div>
 
-    <script type="text/x-template" id="template-home">
-    <div class="jwalk-container">
-        <h1>Home</h1>
+    <script type="text/x-template" id="template-main-header">
+    <header class="jwalk-main-header jwalk-primary">
+        <nav class="jwalk-navbar jwalk-navbar-contained">
+            <a class="jwalk-header-logo">
+                <img src="img/jwalk-logo.svg" alt="Jwalk" title="JWalk" />
+            </a>
+            <ul class="jwalk-navbar-nav">
+                <li class="jwalk-nav-item">
+                    <a class="jwalk-nav-link" href="#">Link 1</a>
+                </li>
+                <li class="jwalk-nav-item">
+                    <a class="jwalk-nav-link" href="#">Link 2</a>
+                </li>
+                <li class="jwalk-nav-item">
+                    <a class="jwalk-nav-link" href="#">Link 3</a>
+                </li>
+                <li class="jwalk-nav-item">
+                    <a class="jwalk-nav-link" href="#">Link 4</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    </script>
+
+    <script type="text/x-template" id="template-main-footer">
+    <footer class="jwalk-main-footer">
+        some footer stuff
+    </footer>
+    </script>
+
+    <script type="text/x-template" id="template-page">
+    <div id="jwalk-demo-wrapper">
+        <main-header />
+        <slot />
+        <main-footer />
     </div>
     </script>
+
+    <script type="text/x-template" id="template-home">
+    <page>
+        <div class="jwalk-container">
+            <h1>Home</h1>
+        </div>
+    </page>
+    </script>
     <script type="text/x-template" id="template-typography">
+    <page>
         <div class="jwalk-container">
             <h1>Typography</h1>
         </div>
+    </page>
     </script>
 
     <script src="https://unpkg.com/vue/dist/vue.js"></script>
