@@ -8,6 +8,10 @@ window.onload = (function() {
         template : '#template-main-footer'
     });
 
+    var Page = Vue.component('page', {
+        template : '#template-page'
+    });
+
     var Home = Vue.component('home', {
         template : '#template-home'
     });
