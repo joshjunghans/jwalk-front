@@ -6,8 +6,9 @@
     <link rel="stylesheet" type="text/css" href="dist/css/jwalk-front.css">
 </head>
 <body>
-    <div class="jwalk-wrapper">
-        <header class="jwalk-main-header jwalk-primary">
+    <div id="jwalk-demo" class="jwalk-wrapper">
+            <router-view></router-view>
+        <!-- <header class="jwalk-main-header jwalk-primary">
             <nav class="jwalk-navbar jwalk-navbar-contained">
                 <a class="jwalk-header-logo">
                     <img src="img/jwalk-logo.svg" alt="Jwalk" title="JWalk" />
@@ -79,10 +80,22 @@
 
         </main>
         <footer class="jwalk-main-footer">
-        </footer>
+        </footer> -->
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-router/3.0.2/vue-router.min.js"></script>
+
+    <script type="text/x-template" id="template-home">
+    <div class="jwalk-container">
+        <h1>Home</h1>
+    </div>
+    </script>
+    <script type="text/x-template" id="template-typography">
+        <div class="jwalk-container">
+            <h1>Typography</h1>
+        </div>
+    </script>
+
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
     <script src="dist/js/demo.js"></script>
 </body>
 </html>
