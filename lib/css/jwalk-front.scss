@@ -1,8 +1,6 @@
 @import 'variables';
 @import 'mixins/mixins';
 
-@import '../../node_modules/normalize-scss/sass/normalize';
-@include normalize();
-
-@import 'util/util';
+@import 'normalize';
 @import 'components/components';
+@import 'util/util';

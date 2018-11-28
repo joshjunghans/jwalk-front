@@ -6,7 +6,8 @@
 
 @mixin make-flex-column {
     @include flexbox();
-    @include flex-flow(column nowrap);
+    @include flex-direction(column);
+    @include flex-wrap(nowrap);
     @content;
 }
 
@@ -20,21 +21,23 @@
     $half-gutter:ceil($gutter-width / 2);
 
     @include make-prefix-class(($class)) {
-        @include make-flex-row-column($width);
-    }
-
-    @include make-prefix-class(($class,'gutter')) {
-        @include make-flex-row-column($width);
-        padding:$half-gutter;
-    }
-
-    @include make-prefix-class(($class,'h','gutter')) {
-        @include make-flex-row-column($width);
         padding-left:$half-gutter;
         padding-right:$half-gutter;
+        @include make-flex-row-column($width);
     }
 
-    @include make-prefix-class(($class,'v','gutter')) {
+    @include make-prefix-class(($class,'no-gutter')) {
+        @include make-flex-row-column($width);
+        padding:0;
+    }
+
+    @include make-prefix-class(($class,'no-gutter-h')) {
+        @include make-flex-row-column($width);
+        padding-left:0;
+        padding-right:0;
+    }
+
+    @include make-prefix-class(($class,'gutter-v')) {
         @include make-flex-row-column($width);
         padding-top:$half-gutter;
         padding-bottom:$half-gutter;

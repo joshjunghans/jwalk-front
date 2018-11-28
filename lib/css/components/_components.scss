@@ -1,6 +1,8 @@
 @import 'scaffold';
+@import 'images';
 @import 'navbars';
-@import 'headers';
 @import 'grid';
 @import 'heros';
-@import 'images';
+@import 'cards';
+
+@include make-theme-classes();

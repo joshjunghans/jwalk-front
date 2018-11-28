@@ -1,19 +1,23 @@
 @include make-prefix-class((row)) {
     @include make-flex-row();
+    margin-left:-(ceil($gutter-width / 2));
+    margin-right:-(ceil($gutter-width / 2));
 }
 
 @include make-prefix-class((column)) {
     @include make-flex-column();
 }
 
-[class^="#{$class-prefix}-col-"], [class*=" #{$class-prefix}-col-"] {
+[class^="#{$class-prefix}-col-"], [class*="-col-"] {
     width:100%;
+    padding-left:ceil($gutter-width / 2);
+    padding-right:ceil($gutter-width / 2);
     @include flex();
 }
 
 @for $i from 1 through $grid-count {
     $col-class:col- + $i;
-    $width: floor( ($i / $grid-count) * 100 ) + %;
+    $width: floor( ($i / $grid-count) * 100 ) + unquote('%');
     @include make-flex-column-variants($col-class,$width);
 }
 
@@ -33,7 +37,7 @@
 
         @for $i from 1 through $grid-count {
             $col-class:list-concat(($breakpoint,'col',$i),$class-delimiter);
-            $width: floor( ($i / $grid-count) * 100 ) + %;
+            $width: floor( ($i / $grid-count) * 100 ) + unquote('%');
             @include make-flex-column-variants($col-class,$width);
         }
     }
@@ -52,7 +56,7 @@
 
         @for $i from 1 through $grid-count {
             $col-class:list-concat(($breakpoint,'down','col',$i),$class-delimiter);
-            $width: floor( ($i / $grid-count) * 100 ) + %;
+            $width: floor( ($i / $grid-count) * 100 ) + unquote('%');
             @include make-flex-column-variants($col-class,$width);
         }
     }

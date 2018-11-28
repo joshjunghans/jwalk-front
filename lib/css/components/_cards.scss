@@ -1,0 +1,45 @@
+@include make-prefix-class('card') {
+
+    @include make-prefix-class('card-img') {
+        position:relative;
+
+        img {
+            width:100%;
+            height:auto;
+        }
+
+        @include make-prefix-class('card-img-overlay') {
+            padding:$card-content-padding;
+            position:absolute;
+            top:0;
+            left:0;
+            bottom:0;
+            right:0;
+            @include flexbox();
+            @include flex-direction('column');
+            @include justify-content('flex-end');
+        }
+    }
+
+    @include make-prefix-class('card-img-padded') {
+        padding-top:$card-content-padding;
+        padding-left:$card-content-padding;
+        padding-right:$card-content-padding;
+
+        @include make-prefix-class('card-img-overlay') {
+            padding-left:ceil($card-content-padding * 2);
+            padding-right:ceil($card-content-padding * 2);
+        }
+    }
+
+    @include make-prefix-class('card-content') {
+        padding:$card-content-padding;
+    }
+
+}
+
+[class^="#{$class-prefix}-col-"], [class*="-col-"] {
+    @include make-prefix-class('card') {
+        height:100%;
+    }
+}

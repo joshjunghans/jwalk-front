@@ -1,0 +1,11 @@
+@each $s,$v in $spacing {
+    @include make-spacing-variants($s,$v);
+}
+
+@each $breakpoint,$size in $breakpoints {
+    @include breakpoint-up($size) {
+        @each $s,$v in $spacing {
+            @include make-spacing-variants($s,$v,$breakpoint);
+        }
+    }
+}

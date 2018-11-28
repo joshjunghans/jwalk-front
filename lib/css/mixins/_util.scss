@@ -2,7 +2,7 @@
     @return ceil($gutter / 2);
 }
 
-@function list-concat($list, $glue: '', $is-nested: false) {
+@function list-concat($list, $glue: $class-delimiter, $is-nested: false) {
     $result: null;
 
     @for $i from 1 through length($list) {
@@ -26,7 +26,12 @@
 }
 
 @mixin make-prefix-class($class-bits,$delimiter:$class-delimiter) {
-    $class-list:join(($class-prefix),$class-bits);
+    $class-list:$class-bits;
+
+    @if $use-prefix == true {
+        $class-list:join(($class-prefix),$class-list);
+    }
+
     @include make-class($class-list,$delimiter) {
         @content;
     }
@@ -35,6 +40,8 @@
 @mixin make-container($max-width) {
     margin-left:auto;
     margin-right:auto;
+    padding-left:ceil($gutter-width / 2);
+    padding-right:ceil($gutter-width / 2);
     width:100%;
     max-width:$max-width;
 }
@@ -48,6 +55,105 @@
 
         @include make-prefix-class($class-list) {
             background-color:$color;
+        }
+    }
+}
+
+@mixin make-theme-classes($themes:$themes) {
+    @each $theme,$theme-props in $themes {
+
+        @include make-prefix-class($theme) {
+            @if map-has-key($theme-props,'background-color') {
+                background-color:map-get($theme-props,'background-color');
+            }
+            @if map-has-key($theme-props,'border-color') {
+                border-color:map-get($theme-props,'border-color');
+            }
+            @if map-has-key($theme-props,'color') {
+                color:map-get($theme-props,'color');
+            }
+            @if map-has-key($theme-props,'link') {
+                $link-props: map-get($theme-props,'link');
+
+                a:not(.#{$class-prefix}-btn) {
+                    @if map-has-key($link-props,'color') {
+                        color:map-get($link-props,'color');
+                    }
+
+                    @if map-has-key($link-props,'hover') {
+                        &:hover {
+                            color:map-get($link-props,'hover');
+                        }
+                    }
+
+                    @if map-has-key($link-props,'active') {
+                        &:hover {
+                            color:map-get($link-props,'active');
+                        }
+                    }
+
+                    @if map-has-key($link-props,'focus') {
+                        &:hover {
+                            color:map-get($link-props,'focus');
+                        }
+                    }
+                }
+            }
+        }
+
+        @include make-prefix-class(('text',$theme)) {
+            @if map-has-key($theme-props,'background-color') {
+                color:map-get($theme-props,'background-color');
+            }
+        }
+    }
+}
+
+@mixin make-header($tag,$props) {
+    #{$tag},.#{list-concat($class-prefix,$tag)} {
+        @each $dec,$val in $props {
+            #{$dec}:$val;
+        }
+    }
+}
+
+@mixin make-spacing-variants($space,$val,$prefix:()) {
+    $types:(
+        'p':'padding',
+        'm':'margin'
+    );
+
+    $dirs:(
+        'l':('left'),
+        'r':('right'),
+        't':('top'),
+        'b':('bottom'),
+        'v':('top','bottom'),
+        'h':('left','right')
+    );
+
+    @each $type, $t in $types {
+        $class-list:($type);
+
+        @if length($prefix) > 0 {
+            $class-list:join($prefix,$class-list);
+        }
+
+        $base-class-list:append($class-list,$space,comma);
+
+        @include make-prefix-class($base-class-list) {
+            #{$t}:$val;
+        }
+
+        @each $dir,$d in $dirs {
+            $cl:append($class-list,$dir,comma);
+            $cl:append($cl,$space);
+
+            @include make-prefix-class($cl) {
+                @each $dec in $d {
+                    #{$t}-#{$dec}:$val;
+                }
+            }    
         }
     }
 }

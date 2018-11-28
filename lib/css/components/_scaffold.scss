@@ -1,17 +1,42 @@
+* {
+    box-sizing:border-box;
+}
+
 html,body,.#{$class-prefix}-wrapper {
     min-height:100vh;
+    overflow-x:hidden;
 }
 
 body {
     font-family:$base-font-family;
     font-size:$base-font-size;
+    line-height:$base-line-height;
 }
 
 a {
     text-decoration:$link-text-decoration;
+    transition:$link-transition;
 }
 
+p,ul,ol {
+    margin-bottom:$paragraph-spacing;
+}
+
+img {
+    vertical-align:middle;
+}
+
+@include make-header(h1,$h1);
+@include make-header(h2,$h2);
+@include make-header(h3,$h3);
+@include make-header(h4,$h4);
+@include make-header(h5,$h5);
+@include make-header(h6,$h6);
+
 @include make-prefix-class(('container')) {
+    $width:100%;
+    @include make-container($width);
+
     @each $breakpoint,$val in $breakpoints {
         @include breakpoint-up($val) {
             $width:map-get($containers,$breakpoint);

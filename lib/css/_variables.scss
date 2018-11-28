@@ -1,6 +1,12 @@
+// The prefix the use on class creation
 $class-prefix:'jwalk' !default;
+
+// The delimiter to use in class string concatenation
 $class-delimiter:'-' !default;
 
+$use-prefix: true !default;
+
+// Misc grayscale
 $gray-1:#222222 !default;
 $gray-2:#333333 !default;
 $gray-3:#666666 !default;
@@ -8,6 +14,7 @@ $gray-4:#999999 !default;
 $gray-5:#cccccc !default;
 $gray-6:#eeeeee !default;
 
+// Grascales as a map
 $grays:() !default;
 
 $grays:map-merge((
@@ -19,6 +26,7 @@ $grays:map-merge((
     'gray-6':$gray-6
 ),$grays);
 
+// Theme colors
 $white:#ffffff !default;
 $primary:#3b5998 !default;
 $secondary:#6897bb !default;
@@ -26,6 +34,7 @@ $info:#f6f5d7 !default;
 $warning:#ffa500 !default;
 $error:#ff4444 !default;
 
+// Theme colors as a map
 $theme-colors:() !default;
 
 $theme-colors:map-merge((
@@ -37,10 +46,72 @@ $theme-colors:map-merge((
     'error':$error
 ),$theme-colors);
 
+// A map of grayscale and theme colors
 $all-colors:map-merge($grays,$theme-colors) !default;
 
+// A map of theme options and there respective styles
+$themes:() !default;
+
+$themes:map-merge((
+    'transparent':(
+        'background-color':transparent,
+        'color':$gray-1,
+        'link':(
+            'color':$gray-4,
+            'hover':$gray-2
+        )
+    ),
+    'primary':(
+        'background-color':$primary,
+        'border-color':lighten($primary,25%),
+        'color':$white,
+        'link':(
+            'color':$gray-5,
+            'hover':$white
+        )
+    ),
+    'secondary':(
+        'background-color':$secondary,
+        'border-color':darken($secondary,25%),
+        'color':$white,
+        'link':(
+            'color':$gray-5,
+            'hover':$white
+        )
+    ),
+    'info':(
+        'background-color':$info,
+        'border-color':darken($info,25%),
+        'color':$gray-2,
+        'link':(
+            'color':$gray-3,
+            'hover':$gray-4
+        )
+    ),
+    'warning':(
+        'background-color':$warning,
+        'border-color':darken($warning,25%),
+        'color':$white,
+        'link':(
+            'color':$gray-5,
+            'hover':$gray-2
+        )
+    ),
+    'error':(
+        'background-color':$error,
+        'border-color':darken($error,25%),
+        'color':$white,
+        'link':(
+            'color':$gray-5,
+            'hover':$white
+        )
+    )
+), $themes);
+
+// The space between items that have gutters
 $gutter-width:1.5rem;
 
+// A map of breakpoints
 $breakpoints:() !default;
 
 $breakpoints:map-merge((
@@ -50,29 +121,93 @@ $breakpoints:map-merge((
     'xl':1200px
 ),$breakpoints);
 
+// A map of container max widths
 $containers:() !default;
 
-$containers:map-merge((''
+$containers:map-merge((
     'sm':450px,
     'md':750px,
     'lg':950px,
     'xl':1170px
 ),$containers);
 
+// Number of columns to use for grid layouts
 $grid-count:12 !default;
 
-$base-font-family: Verdana, Helvetica, sans-serif;
-$base-font-size: 14px;
+$spacing:() !default;
 
-$link-text-decoration: none;
+$space: 1rem !default;
 
-$navbar-padding-v: ceil($gutter-width / 4);
-$navbar-padding-h:ceil($gutter-width / 4);
-$navbar-navlink-padding-v: ceil($gutter-width / 2);
-$navbar-navlink-padding-h: ceil($gutter-width / 2);
+$spacing:map-merge((
+    0: 0,
+    1: ($space * .25),
+    2: ($space * .5),
+    3: ($space * .75),
+    4: $space,
+    5: ($space * 1.25),
+    6: ($space * 1.5),
+    7: ($space * 1.75),
+    8: ($space * 2)
+), $spacing);
 
-$main-header-navlink-transition: .25s ease-in-out;
+// Typography
+$base-font-family: Helvetica, sans-serif !default;
+$base-font-size: 14px !default;
+$base-line-height:1.428 !default;
+$link-transition: .25s ease-in-out !default;
+$link-text-decoration: none !default;
+$paragraph-spacing:1.25rem !default;
+$base-border-width:2px;
+$base-border-style:solid;
+$base-border-radius:.45rem;
 
-$main-header-default-background-color: $primary;
-$main-header-default-navlink-color: $gray-5;
-$main-header-default-navlink-hover-color: $white;
+$h1:() !default;
+$h2:() !default;
+$h3:() !default;
+$h4:() !default;
+$h5:() !default;
+$h6:() !default;
+
+$h1:map-merge((
+    'font-size':2.85rem,
+    'font-weight':900,
+    'margin':0 0 1rem
+),$h1);
+
+$h2:map-merge((
+    'font-size':2.25rem,
+    'font-weight':900,
+    'margin':0 0 .75rem
+),$h2);
+
+$h3:map-merge((
+    'font-size':2rem,
+    'font-weight':700,
+    'margin':0 0 .75rem
+),$h3);
+
+$h4:map-merge((
+    'font-size':1.75rem,
+    'font-weight':700,
+    'text-transform':uppercase,
+    'margin':0 0 .5rem
+),$h4);
+
+$h5:map-merge((
+    'font-size':1rem,
+    'font-weight':700,
+    'margin':0
+),$h5);
+
+$h6:map-merge((
+    'font-size':.85rem,
+    'font-weight':600,
+    'margin':0
+),$h6);
+
+$navbar-padding-v: ceil($gutter-width / 4) !default;
+$navbar-padding-h:ceil($gutter-width / 4) !default;
+$navbar-navlink-padding-v: ceil($gutter-width / 2) !default;
+$navbar-navlink-padding-h: ceil($gutter-width / 2) !default;
+
+$card-content-padding:ceil($gutter-width / 2);

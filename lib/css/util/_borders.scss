@@ -1,0 +1,157 @@
+@include make-prefix-class('bordered') {
+    border-width:$base-border-width;
+    border-style: $base-border-style;
+}
+
+@include make-prefix-class('border-t') {
+    border-top-width:$base-border-width;
+    border-style: $base-border-style;
+}
+
+@include make-prefix-class('border-t-only') {
+    border-top-width:$base-border-width;
+    border-left-width: 0;
+    border-bottom-width: 0;
+    border-right-width: 0;
+    border-style: $base-border-style;
+}
+
+@include make-prefix-class('border-b') {
+    border-bottom-width:$base-border-width;
+    border-style: $base-border-style;
+}
+
+@include make-prefix-class('border-b-only') {
+    border-bottom-width:$base-border-width;
+    border-left-width: 0;
+    border-top-width: 0;
+    border-right-width: 0;
+    border-style: $base-border-style;
+}
+
+@include make-prefix-class('border-v') {
+    border-top-width:$base-border-width;
+    border-bottom-width:$base-border-width;
+    border-style: $base-border-style;
+}
+
+@include make-prefix-class('border-v-only') {
+    border-top-width:$base-border-width;
+    border-left-width: 0;
+    border-bottom-width: $base-border-width;
+    border-right-width: 0;
+    border-style: $base-border-style;
+}
+
+@include make-prefix-class('border-l') {
+    border-left-width:$base-border-width;
+    border-style: $base-border-style;
+}
+
+@include make-prefix-class('border-l-only') {
+    border-left-width:$base-border-width;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    border-right-width: 0;
+    border-style: $base-border-style;
+}
+
+@include make-prefix-class('border-r') {
+    border-right-width:$base-border-width;
+    border-style: $base-border-style;
+}
+
+@include make-prefix-class('border-r-only') {
+    border-right-width:$base-border-width;
+    border-left-width: 0;
+    border-bottom-width: 0;
+    border-top-width: 0;
+    border-style: $base-border-style;
+}
+
+@include make-prefix-class('border-h') {
+    border-left-width:$base-border-width;
+    border-right-width:$base-border-width;
+    border-style: $base-border-style;
+}
+
+@include make-prefix-class('border-h-only') {
+    border-right-width:$base-border-width;
+    border-left-width: $base-border-width;
+    border-bottom-width: 0;
+    border-top-width: 0;
+    border-style: $base-border-style;
+}
+
+@include make-prefix-class('border-rounded') {
+    border-radius:$base-border-radius;
+}
+
+@include make-prefix-class('border-rounded-tl') {
+    border-top-left-radius:$base-border-radius;
+}
+
+@include make-prefix-class('border-rounded-tl-only') {
+    border-top-left-radius:$base-border-radius;
+    border-top-right-radius:0;
+    border-bottom-left-radius:0;
+    border-bottom-right-radius:0;
+}
+
+@include make-prefix-class('border-rounded-tr') {
+    border-top-right-radius:$base-border-radius;
+}
+
+@include make-prefix-class('border-rounded-tr-only') {
+    border-top-right-radius:$base-border-radius;
+    border-top-left-radius:0;
+    border-bottom-left-radius:0;
+    border-bottom-right-radius:0;
+}
+
+@include make-prefix-class('border-rounded-t') {
+    border-top-left-radius:$base-border-radius;
+    border-top-right-radius:$base-border-radius;
+}
+
+@include make-prefix-class('border-rounded-t-only') {
+    border-top-right-radius:$base-border-radius;
+    border-top-left-radius:$base-border-radius;
+    border-bottom-left-radius:0;
+    border-bottom-right-radius:0;
+}
+
+@include make-prefix-class('border-rounded-bl') {
+    border-bottom-left-radius:$base-border-radius;
+}
+
+@include make-prefix-class('border-rounded-bl-only') {
+    border-top-right-radius:0;
+    border-top-left-radius:0;
+    border-bottom-left-radius:$base-border-radius;
+    border-bottom-right-radius:0;
+}
+
+@include make-prefix-class('border-rounded-br') {
+    border-bottom-right-radius:$base-border-radius;
+    border-bottom-left-radius:$base-border-radius;
+}
+
+@include make-prefix-class('border-rounded-br-only') {
+    border-top-right-radius:0;
+    border-top-left-radius:0;
+    border-bottom-left-radius:0;
+    border-bottom-right-radius:$base-border-radius;
+}
+
+@include make-prefix-class('border-rounded-b') {
+    border-bottom-left-radius:$base-border-radius;
+    border-bottom-right-radius:$base-border-radius;
+}
+
+@include make-prefix-class('border-rounded-b-only') {
+    border-top-right-radius:0;
+    border-top-left-radius:0;
+    border-bottom-left-radius:$base-border-radius;
+    border-bottom-right-radius:$base-border-radius;
+}
